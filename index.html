@@ -81,9 +81,8 @@
             <div>
                 <div class="flex justify-between items-center">
                     <h2 class="text-2xl text-gray-600 font-bold">Mobile First Corp</h2>
-                    <img src="./delete.png" alt="">
+                    <img src="./assets/delete.png" alt="">
                 </div>
-                
                 <h3 class="text-gray-500">React Native Developer</h3>
                 <h4 class="text-gray-500 py-4">Remote . Full Time . $130,000 - $ 175,000</h4>
                 <div id="not-applied-badge"  class="badge badge-soft badge-info text-black bg-gray-200 ">NOT APPLIED</div>
@@ -92,13 +91,15 @@
                 <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
             </div>
             <div class="pt-5 flex gap-3">
-                <button id="interview-btn" class="btn btn-outline btn-success">INTERVIEW</button>
-                <button id="rejected-btn" class="btn btn-outline btn-error">REJECTED</button> 
+                <button onclick="showOnly('interview-badge')" id="interview-btn" class="btn btn-outline btn-success">INTERVIEW</button>
+                <button onclick="showOnly('rejected-badge')" id="rejected-btn" class="btn btn-outline btn-error">REJECTED</button> 
             </div>
 
         </div>
         
      </section>
     <!-- Job Post Area ended -->
+     <script src="./Script/machine.js"></script>
+    <script src="./Script/script.js"></script>
 </body>
 </html>
