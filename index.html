@@ -51,28 +51,54 @@
                 </div>
                 </div>
             </div>
-            
         </section>
     </header>
 
     <!-- Functional Buttons Started  -->
-    <section class="w-11/12 mx-auto py-10 space-y-5">
-        <h2 class="text-3xl font-bold">
-            Available Jobs
-        </h2>
+    <section class="w-11/12 mx-auto pt-10 space-y-4">
+        <div class="flex justify-between items-center">
+            <h2 class="text-3xl font-bold">Available Jobs</h2>
+            <p class="text-xl">8 Jobs</p>
+        </div>
 
-        <div class="buttons">
+        <div class="tabs flex gap-2">
             <button class="btn flex-col btn-info text-white h-full py-2 px-12 btn-lg">
                 <p>All</p>
             </button>
-            <button class="btn flex-col btn-primary btn-soft  h-full py-2 btn-lg">
+            <button class="btn flex-col btn-soft text-gray-600  h-full py-2 btn-lg">
                 <p>Interview</p>
             </button>
-            <button class="btn flex-col btn-primary btn-soft  h-full py-2 btn-lg">
+            <button class="btn flex-col btn-soft text-gray-600  h-full py-2 btn-lg">
                 <p>Rejected</p>
             </button>
         </div>
     </section>
     <!-- Functional Buttons Ended  -->
+
+    <!-- Job Post Area started -->
+     <section class="w-11/12 mx-auto py-10 space-y-5 ">
+        <div class=" card card-border border-gray-300 bg-base-100 p-5  mx-auto">
+            <div>
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl text-gray-600 font-bold">Mobile First Corp</h2>
+                    <img src="./delete.png" alt="">
+                </div>
+                
+                <h3 class="text-gray-500">React Native Developer</h3>
+                <h4 class="text-gray-500 py-4">Remote . Full Time . $130,000 - $ 175,000</h4>
+                <div id="not-applied-badge"  class="badge badge-soft badge-info text-black bg-gray-200 ">NOT APPLIED</div>
+                <div id="interview-badge" class="badge badge-outline badge-success hidden">INTERVIEW</div>
+                <div id="rejected-badge" class="badge badge-outline badge-error hidden">REJECTED</div>
+                <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+            </div>
+            <div class="pt-5 flex gap-3">
+                <button id="interview-btn" class="btn btn-outline btn-success">INTERVIEW</button>
+                <button id="rejected-btn" class="btn btn-outline btn-error">REJECTED</button> 
+            </div>
+
+        </div>
+        
+     </section>
+    <!-- Job Post Area ended -->
 </body>
 </html>
