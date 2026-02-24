@@ -75,7 +75,7 @@ mainContainer.addEventListener("click", function(event){
     const cardInfo = {
         notAppliedBadge, 
         interviewBadge, 
-        rejectedBadge: "INTERVIEW",
+        rejectedBadge,
         nameCompany,
         positionJob,
         typeJob,
@@ -103,7 +103,7 @@ function renderJopPost(){
     for(let interviews of interviewList){
         console.log(interviews);
         let div = document.createElement('div');
-        div.className = 'card card-border border-gray-300 bg-base-100 p-5  mx-auto';
+        div.className = 'w-11/12 mx-auto py-3 space-y-5';
         div.innerHTML = `        <!-- job post 1 -->
         <div class="card card-border border-gray-300 bg-base-100 p-5  mx-auto">
             <!-- <div> -->
@@ -115,7 +115,7 @@ function renderJopPost(){
                 </div>
                 <h3 class="position-job text-gray-500">React Native Developer </h3>
                 <h4 class="text-gray-500 py-4"><span class="location">Remote</span> . <span class="type">Full Time</span> . <span class="salary">$130,000 - $ 175,000</span></h4>
-                <div id="not-applied-badge"  class="badge-not-applied badge badge-soft badge-info text-black bg-gray-200 ">NOT APPLIED</div>
+                <div id="not-applied-badge"  class="badge-not-applied badge badge-soft badge-info text-black bg-gray-200 ">${interviews.interviewBadge}</div>
                 <div id="interview-badge" class="badge-interview badge badge-outline badge-success hidden">INTERVIEW</div>
                 <div id="rejected-badge" class="badge-rejected badge badge-outline badge-error hidden">REJECTED</div>
                 <p class="description">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
