@@ -29,6 +29,7 @@ function noJopPostToShow(){
         `;
         filterSection.appendChild(div);
 }
+
 function counTotal(){
     totalNumber.innerText = allCardsSection.children.length;
     leftsideTotalNumber.innerText = allCardsSection.children.length;
@@ -187,8 +188,8 @@ function renderJopPost(){
                             <p class="description">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                         <!-- </div> -->
                         <div class="pt-5 flex gap-3">
-                            <button id="interview-btn" class="btn btn-outline btn-success">INTERVIEW</button>
-                            <button id="rejected-btn" class="btn btn-outline btn-error">REJECTED</button> 
+                            <button id="interview-btn" class="interview-card-button btn btn-outline btn-success">INTERVIEW</button>
+                            <button id="rejected-btn" class="reject-card-button btn btn-outline btn-error">REJECTED</button> 
                         </div>
 
                     </div>
@@ -223,8 +224,8 @@ function renderRejectPost(){
                 <p class="description">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
             <!-- </div> -->
             <div class="pt-5 flex gap-3">
-                <button id="interview-btn" class="btn btn-outline btn-success">INTERVIEW</button>
-                <button id="rejected-btn" class="btn btn-outline btn-error">REJECTED</button> 
+                <button id="interview-btn" class="interview-card-button btn btn-outline btn-success">INTERVIEW</button>
+                <button id="rejected-btn" class="reject-card-button btn btn-outline btn-error">REJECTED</button> 
             </div>
 
         </div>
@@ -234,6 +235,5 @@ function renderRejectPost(){
         filterSection.appendChild(div);
     }
 }
-
 
 
