@@ -92,8 +92,6 @@ mainContainer.addEventListener("click", function(event){
     const descriptionJob = parentNode.querySelector(".description").innerText;
 
     parentNode.querySelector(".badge-not-applied").innerText = "INTERVIEW";
-    
-    // console.log(notAppliedBadge, interviewBadge, rejectedBadge);
 
     const cardInfo = {
         notAppliedBadge, 
@@ -120,7 +118,6 @@ mainContainer.addEventListener("click", function(event){
         renderRejectPost();
     }
     
-    // renderJopPost();
 
     } else if(event.target.classList.contains("reject-card-button")){ 
         const parentNode = event.target.parentNode.parentNode;
@@ -162,6 +159,61 @@ mainContainer.addEventListener("click", function(event){
         }
         counTotal();
         // renderRejectPost();
+    } else if(event.target.classList.contains("delete-icon")){ 
+        const parentNode = event.target.parentNode.parentNode.closest(".card");
+        // const card = event.target.closest(".card");
+        
+        
+        const notAppliedBadge = parentNode.querySelector(".badge-not-applied").innerText;
+        const interviewBadge = parentNode.querySelector(".badge-interview").innerText;
+        const rejectedBadge = parentNode.querySelector(".badge-rejected").innerText;
+        const nameCompany = parentNode.querySelector(".company-name").innerText;
+        const positionJob = parentNode.querySelector(".position-job").innerText;
+        const typeJob = parentNode.querySelector(".type").innerText;
+        const salaryJob = parentNode.querySelector(".salary").innerText;
+        const descriptionJob = parentNode.querySelector(".description").innerText;
+
+        parentNode.querySelector(".badge-not-applied").innerText = "NOT APPLIED";
+        
+        // console.log(notAppliedBadge, interviewBadge, rejectedBadge);
+
+        const cardInfo = {
+            notAppliedBadge: "NOT APPLIED" , 
+            interviewBadge, 
+            rejectedBadge,
+            nameCompany,
+            positionJob,
+            typeJob,
+            salaryJob,
+            descriptionJob
+        }
+
+        const rejectedJobExist = rejectedList.find(item => item.nameCompany == cardInfo.nameCompany);
+
+        if(!rejectedJobExist){
+            rejectedList.push(cardInfo);
+        }
+
+        interviewList = interviewList.filter(item => item.nameCompany != cardInfo.nameCompany);
+
+        // if(toggleButtonStatus == "interview-tab-btn"){
+        //     renderJopPost();
+        // }
+
+
+    const deletedJob = rejectedList.find(item => item.nameCompany === cardInfo.nameCompany);
+    if (deletedJob !== -1) {
+      rejectedList.splice(deletedJob, 1);
+    }
+
+    if(toggleButtonStatus == "interview-tab-btn"){
+            renderJopPost();
+        } if(toggleButtonStatus == "rejected-tab-btn"){
+            renderRejectPost();
+        }
+    
+        counTotal();
+        // renderRejectPost();
     }
 });
 
@@ -176,8 +228,8 @@ function renderJopPost(){
                         <!-- <div> -->
                             <div class="flex justify-between items-center">
                                 <h2 class="company-name text-2xl text-gray-600 font-bold">${interviews.nameCompany}</h2>
-                                <button id="delete-img-btn">
-                                    <img src="./assets/delete.png" alt="">
+                                <button id="delete-img-btn" class="delete-img-card-btn">
+                                    <img src="./assets/delete.png" alt="" class="delete-icon" style="cursor: pointer;">
                                 </button>
                             </div>
                             <h3 class="position-job text-gray-500">React Native Developer </h3>
@@ -212,8 +264,8 @@ function renderRejectPost(){
             <!-- <div> -->
                 <div class="flex justify-between items-center">
                     <h2 class="company-name text-2xl text-gray-600 font-bold">${rejected.nameCompany}</h2>
-                    <button id="delete-img-btn">
-                        <img src="./assets/delete.png" alt="">
+                    <button id="delete-img-btn" class="delete-img-card-btn">
+                        <img src="./assets/delete.png" alt="" class="delete-icon" style="cursor: pointer;">
                     </button>
                 </div>
                 <h3 class="position-job text-gray-500">React Native Developer </h3>
