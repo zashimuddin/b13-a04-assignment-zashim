@@ -15,6 +15,7 @@ const allCardsSection = document.getElementById("allCards");
 const mainContainer = document.querySelector("main");
 const filterSection = document.getElementById("filtered-section");
 
+// Render job post to show when there are no job post to show in Interview and Rejected Toggling button
 function noJopPostToShow(){
         filterSection.innerHTML = " ";
         let div = document.createElement('div');
@@ -30,6 +31,7 @@ function noJopPostToShow(){
         filterSection.appendChild(div);
 }
 
+// Counts the Job post
 function counTotal(){
     totalNumber.innerText = allCardsSection.children.length;
     leftsideTotalNumber.innerText = allCardsSection.children.length;
@@ -38,6 +40,7 @@ function counTotal(){
 }
 counTotal();
 
+// Toggling between button - All, Interview and Rejected
 function toggleStyle(id){
     
     allTabButton.classList.add("btn-soft", "text-gray-600");
@@ -77,6 +80,7 @@ function toggleStyle(id){
     }
 }
 
+//Implemented Event bubbling with event deligation
 mainContainer.addEventListener("click", function(event){
 
     if(event.target.classList.contains("interview-card-button")){
@@ -116,6 +120,11 @@ mainContainer.addEventListener("click", function(event){
 
     if(toggleButtonStatus == "rejected-tab-btn"){
         renderRejectPost();
+        if(rejectedList.length === 0){
+            noJopPostToShow();
+        }else if(rejectedList.length !== 0){
+            renderRejectPost();
+        }
     }
     
 
@@ -133,7 +142,6 @@ mainContainer.addEventListener("click", function(event){
 
         parentNode.querySelector(".badge-not-applied").innerText = "REJECTED";
         
-        // console.log(notAppliedBadge, interviewBadge, rejectedBadge);
 
         const cardInfo = {
             notAppliedBadge: "REJECTED" , 
@@ -156,13 +164,16 @@ mainContainer.addEventListener("click", function(event){
 
         if(toggleButtonStatus == "interview-tab-btn"){
             renderJopPost();
+            if(interviewList.length === 0){
+                noJopPostToShow();
+            }else if(interviewList.length !== 0){
+                renderJopPost();
+            }
         }
         counTotal();
         // renderRejectPost();
     } else if(event.target.classList.contains("delete-icon")){ 
         const parentNode = event.target.parentNode.parentNode.closest(".card");
-        // const card = event.target.closest(".card");
-        
         
         const notAppliedBadge = parentNode.querySelector(".badge-not-applied").innerText;
         const interviewBadge = parentNode.querySelector(".badge-interview").innerText;
@@ -174,8 +185,6 @@ mainContainer.addEventListener("click", function(event){
         const descriptionJob = parentNode.querySelector(".description").innerText;
 
         parentNode.querySelector(".badge-not-applied").innerText = "NOT APPLIED";
-        
-        // console.log(notAppliedBadge, interviewBadge, rejectedBadge);
 
         const cardInfo = {
             notAppliedBadge: "NOT APPLIED" , 
@@ -208,15 +217,29 @@ mainContainer.addEventListener("click", function(event){
 
     if(toggleButtonStatus == "interview-tab-btn"){
             renderJopPost();
+            //=================
+            if(interviewList.length === 0){
+                noJopPostToShow();
+            }else if(interviewList.length !== 0){
+                renderJopPost();
+            }//=================
         } if(toggleButtonStatus == "rejected-tab-btn"){
             renderRejectPost();
+            //===================
+            if(rejectedList.length === 0){
+                noJopPostToShow();
+            }else if(rejectedList.length !== 0){
+                renderRejectPost();
+            }//===================
         }
-    
+
         counTotal();
         // renderRejectPost();
     }
 });
 
+
+// Render job post when toggling to Interview button
 function renderJopPost(){
     filterSection.innerHTML = " ";
     for(let interviews of interviewList){
@@ -234,7 +257,7 @@ function renderJopPost(){
                             </div>
                             <h3 class="position-job text-gray-500">React Native Developer </h3>
                             <h4 class="text-gray-500 py-4"><span class="location">Remote</span> . <span class="type">Full Time</span> . <span class="salary">$130,000 - $ 175,000</span></h4>
-                            <div id="not-applied-badge"  class="badge-not-applied badge badge-soft badge-info text-black bg-gray-200 ">${interviews.interviewBadge}</div>
+                            <div id="not-applied-badge"  class="badge-not-applied badge badge-outline badge-success text-green-500">${interviews.interviewBadge}</div>
                             <div id="interview-badge" class="badge-interview badge badge-outline badge-success hidden">INTERVIEW</div>
                             <div id="rejected-badge" class="badge-rejected badge badge-outline badge-error hidden">REJECTED</div>
                             <p class="description">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
@@ -252,6 +275,7 @@ function renderJopPost(){
     }
 }
 
+// Render job post when toggling to Rejected button
 function renderRejectPost(){
     filterSection.innerHTML = " ";
     
@@ -270,7 +294,7 @@ function renderRejectPost(){
                 </div>
                 <h3 class="position-job text-gray-500">React Native Developer </h3>
                 <h4 class="text-gray-500 py-4"><span class="location">Remote</span> . <span class="type">Full Time</span> . <span class="salary">$130,000 - $ 175,000</span></h4>
-                <div id="not-applied-badge"  class="badge-not-applied badge badge-soft badge-info text-black bg-gray-200 ">${rejected.notAppliedBadge}</div>
+                <div id="not-applied-badge"  class="badge-not-applied badge badge-outline badge-error text-red-500">${rejected.rejectedBadge}</div>
                 <div id="interview-badge" class="badge-interview badge badge-outline badge-success hidden">${rejected.interviewBadge}</div>
                 <div id="rejected-badge" class="badge-rejected badge badge-outline badge-error hidden">${rejected.rejectedBadge}</div>
                 <p class="description">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
@@ -287,5 +311,3 @@ function renderRejectPost(){
         filterSection.appendChild(div);
     }
 }
-
-
